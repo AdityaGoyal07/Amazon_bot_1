@@ -9,10 +9,16 @@ import random
 import logging
 import re
 from typing import Optional
-from playwright.async_api import async_playwright, Page, Browser
+from playwright.async_api import async_playwright, Page, Browser,sync_playwright
 
 logger = logging.getLogger(__name__)
 
+def launch_browser():
+    try:
+        return sync_playwright().start()
+    except Exception as e:
+        print("Playwright failed:", e)
+        return None
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
