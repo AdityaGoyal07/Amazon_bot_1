@@ -1,5 +1,5 @@
 # ── Core automation ────────────────────────────────────────────
-playwright>=1.43.0          # Browser automation (pip install playwright && playwright install chromium)
+playwright==1.42.0          # Browser automation (pip install playwright && playwright install chromium)
 pyyaml>=6.0.1               # Config file parsing
 
 # ── Streamlit UI ───────────────────────────────────────────────
