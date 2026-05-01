@@ -83,7 +83,7 @@ async def _scroll_page(page: Page, steps=6):
     await asyncio.sleep(0.4)
 
 
-async def _try_get_text(element, selectors: list) -> Optional[str]:
+async def _try_get_text(element, selectors: list) -> Optional[str]:#df scrapring the text from the element using the provided selectors
     for sel in selectors:
         try:
             el = await element.query_selector(sel)
@@ -108,14 +108,17 @@ async def _try_get_attr(element, selectors: list, attr: str) -> Optional[str]:
             continue
     return None
 
-
-def _parse_price(raw: Optional[str]) -> Optional[int]:
+try:
+    def _parse_price(raw: Optional[str]) -> Optional[int]:
     if not raw:
         return None
     try:
         return int(re.sub(r"[^\d]", "", raw))
     except (ValueError, TypeError):
         return None
+    
+except Exception as exc:
+    logger.error(f"Price parsing function error: {exc}")
 
 
 def _parse_rating(raw: Optional[str]) -> Optional[float]:
